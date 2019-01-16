@@ -1,0 +1,35 @@
+W załączniku dwa pliki - FAU.car i ir5.xyz. Pliki zawierają współrzędne
+atomów w komórce elementarnej fojazytu (FAU) i klastra irydu (ir5).
+Najogólniej chodz i o to, żeby odnaleźć "najlepsze" miejsca dla klastra
+wewnątrz fojazytu.
+
+Fojazyt jest kryształem, o wymiarach a, b, c i kątach alfa, beta, gamma
+komórki elementarnej podanych w pliku car (linijka PBC). Wewnątrz
+struktury jest komora, która jest na tyle duża, że mogą pomieścić się w
+niej inne cząsteczki, na przykład klaster Ir.
+
+Jako że możliwych położeń Ir5 w komorze jest dużo - chcmey znaleźć
+takie, które będzie najbardziej odpowiednie. Metod jest kilka, ale
+myślę, że najlepiej posłużyć się metodą Monte Carlo.
+
+1. generujemy orientację klastra Ir5 - obracamy o losowy kąt wokół osi
+x, potem o losowy kąt wokół osi y i losowy kąt wokół osi z.
+
+2. przesuwamy tak obrócony klaster o losowy wektor, ale taki, który
+mieści się w komórce elementarnej FAU
+
+3. sprawdzamy, czy atomy Ir5 i FAU nie leżą zbyt blisko lub zbyt
+daleko siebie - przyjmujemy, że optymalna odległość powinna być między
+1.5 a 3.5 Angstroema. (wszystkie wymiary komórki i położenia atomów w
+plikach są podane w Angstroemach). To znaczy - jeśli jakikolwiek atom
+leży bliżej niż 1.5, lub wszystkie atomy leżą dalej niż 3.5 - wtedy
+odrzucamy taki układ i generujemy nowy.
+
+3a. Jeśli odległości są ok - zapisujemy położenia całego układu - i
+fojazytu i Ir w jakimś pliku.
+
+3b. Jeśli odległości są ok, ale podobny układ już mamy wygenerowany
+wczesniej (położenia atomów Ir zgadzają się z dokładnością do
+0.5 Angstroema) - taki układ odrzucamy.
+
+4. punkty 1-3 powtarzamy aż wygeneruje się ~20 położeń.

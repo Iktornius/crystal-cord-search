@@ -1,0 +1,1 @@
+Basically the only required packages are pandas and numpy and eventually matplotlib for plotting which are all in scipy. 
